@@ -14,7 +14,6 @@ results = search.get_hash
 
 
 publications = results[:articles] || results["articles"]
-puts publications.class
 
 # Generate HTML content
 html_content = <<-HTML
@@ -45,14 +44,18 @@ html_content = <<-HTML
         <h2>Publications</h2>
 HTML
 
-publications.each do |article|
-  title = article["title"]
-  link = article["link"]
-  authors = article["authors"] || "Unknown Authors"
-  year = article["year"] || "N/A"
-
-  html_content += "<li><b>#{title}</b> - #{authors} (#{year})<br>"
-  html_content += "<a href='#{link}' target='_blank'>Read More</a></li>"
+publications.sort_by { |article| -article[:year].to_i }.each do |article|
+    title = article[:title]
+    link = article[:link]
+    authors = article[:authors] || "Unknown Authors"
+    year = article[:year] || "N/A"
+    publication = article[:publication] || "Unknown Publication"
+  
+    html_content += "<div class='publication'>"
+    html_content += "<a href='#{link}' target='_blank' class='publication-title'>#{title}</a><br>"
+    html_content += "<span>#{authors}</span><br>"
+    html_content += "<b>#{publication} #{year}</b>"
+    html_content += "</div>"
 end
 
 html_content += <<-HTML
