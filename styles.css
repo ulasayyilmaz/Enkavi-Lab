@@ -1,3 +1,9 @@
+/* This is where all styling happens. Each {} contains stylistic feature choices inside ended by ";".
+The name of the block where styling is attached is displayed before "{". 
+    "." indicates a class name
+    ""#" indicates unique id */
+
+/* styling true for all body elements (if not overwritten in section or div block descriptions) */
 body {
     font-family: Arial, sans-serif;
     margin: 0;

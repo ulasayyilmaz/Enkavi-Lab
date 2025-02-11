@@ -1,6 +1,10 @@
+# Scrape google scholar articles belonging to name Enkavi and author_id (Zeynep Enkavi's google scholar author_id)
+
 require 'google_search_results'
 require 'json'
 
+# parameters needed for google search api (api key is unique to Ulas Ayyilmaz), 
+# change author_id with the google scholar id of target individual and q with any descriptor text
 params = {
   api_key: "092363a8911416ebd92e9d6d1e5453a1e50b3cd0f0acbe6208cfd592b1c8b298",
   engine: "google_scholar_author",
@@ -9,13 +13,15 @@ params = {
   hl: "en"
 }
 
+# gather results for google search with given parameters
+# results is a dictionary of keys and values representing information on the searched google scholar webpage
 search = GoogleSearch.new(params)
 results = search.get_hash
 
-
+# get the values for the key "articles" from the results dictionary, assign it to variable "publicatioins"
 publications = results[:articles] || results["articles"]
 
-# Generate HTML content
+# Generate HTML content for the page
 html_content = <<-HTML
 <!DOCTYPE html>
 <html lang="en">
@@ -44,6 +50,9 @@ html_content = <<-HTML
         <h2>Publications</h2>
 HTML
 
+# cut the HTML content to add scraped content to the body
+
+# sort publications by year
 publications.sort_by { |article| -article[:year].to_i }.each do |article|
     title = article[:title]
     link = article[:link]
@@ -51,6 +60,7 @@ publications.sort_by { |article| -article[:year].to_i }.each do |article|
     year = article[:year] || "N/A"
     publication = article[:publication] || "Unknown Publication"
   
+    # add html content the relevant information in desired format (authors, publication etc)
     html_content += "<div class='publication'>"
     html_content += "<a href='#{link}' target='_blank' class='publication-title'>#{title}</a><br>"
     html_content += "<span>#{authors}</span><br>"
@@ -58,6 +68,7 @@ publications.sort_by { |article| -article[:year].to_i }.each do |article|
     html_content += "</div>"
 end
 
+# finish the html page formatting
 html_content += <<-HTML
     
 </section>
@@ -66,7 +77,7 @@ html_content += <<-HTML
 </html>
 HTML
 
-# Save to HTML file
+# Save to publications.HTML file
 File.open("publications.html", "w") { |file| file.write(html_content) }
 
 puts "Publications page updated successfully!"

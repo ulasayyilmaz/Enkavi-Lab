@@ -1,3 +1,10 @@
+<!-- 
+    Teams PAGE. 
+ -->
+
+ <!-- this is initializing key attributes of the page. don't change. 
+    points to "styles.css" for the styling -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,10 +12,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Team - Enkavi Lab</title>
     <link rel="stylesheet" href="styles.css">
+
+    <!-- this is a package for importing icons for email, resume, linkedin etc -->
     <script src="https://kit.fontawesome.com/138d1d082e.js" crossorigin="anonymous"></script>
 </head>
-<body>
 
+<body>
+    <!-- This is the header. Initializes the links (href) that lead to other connected pages -->
     <header>
         <h1>Meet Our Team</h1>
         <nav>
@@ -23,24 +33,29 @@
     </header>
 
     <section id="team">
-
         <h2>Lab Members</h2>
 
+        <!-- div block for class team-grid4 -->
         <div class="team-grid4">
-
+            
+            <!-- each individual is represented by class = "member'-->
             <div class="member">
                 <img src="images/Zeynep_Enkavi.jpg" alt="Dr. Zeynep Enkavi">
                 <h2>Dr. Zeynep Enkavi</h2>
                 <p>Principal Investigator</p>
+                <!-- icons (and the links they take) under image -->
                 <div class="links">
                     <a href="https://zenkavi.github.io/" target="_blank"><i class="fas fa-globe"></i></a>
                     <a href="mailto:zenkavi@cmc.edu"><i class="fas fa-envelope"></i></a>
                     <a href="https://www.cmc.edu/sites/default/files/2024-07/CV.pdf" target="_blank"><i class="fas fa-file-alt"></i></a>
                 </div>
+                <!-- replace short description with anything you want displayed before clicking show more button -->
                 <p class="short-description"></p>
+                <!-- replace full description with everything you want displayed-->
                 <p class="full-description">I recently </p>
                 <button class="show-more-btn">Show More</button>
             </div>
+
             <div class="member">
                 <img src="images/Ulas.jpeg" alt="Ulas Ayyilmaz">
                 <h2>Ulaş Ayyılmaz</h2>

@@ -1,3 +1,9 @@
+<!-- 
+    HOME PAGE. 
+ -->
+
+ <!-- this is initializing key attributes of the page. don't change. 
+    points to "styles.css" for the styling -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +12,10 @@
     <title>Enkavi Lab - Claremont McKenna College</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
 
+
+<body>
+    <!-- This is the header. Initializes the links (href) that lead to other connected pages -->
     <header>
         <h1>Enkavi Lab @ Claremont McKenna</h1>
         <nav>
@@ -27,12 +35,16 @@
         <p>We study decision-making, self-regulation, and neuroscience using fMRI data analysis and other computational methods.</p>
     </section>
 
-    <!-- Image Slider Section -->
+    <!-- Image Slider Section, add new images to images folder, 
+        and adjust the images/...jpg name accordingly -->
     <section id="slider-container">
         <div class="slider">
+
+            <!-- each div block is for an object with class slide, copy and paste this block for more -->
             <div class="slide fade">
                 <img src="images/cmc1.jpg" alt="Slide 1">
             </div>
+
             <div class="slide fade">
                 <img src="images/cmc2.jpg" alt="Slide 2">
             </div>
@@ -41,15 +53,18 @@
         <a class="next" onclick="changeSlide(1)">&#10095;</a>
     </section>
 
+    <!-- contact info. add the email address to href=, change how it is displayed after  -->
     <section id="contact">
         <h3>Contact</h3>
         <p>Email us at: <a href="mailto:zeynep.enkavi@cmc.edu" class='publication-title'>zeynep.enkavi@cmc.edu</a></p>
     </section>
 
+    <!-- footnote display -->
     <footer>
         <p>&copy; 2025 Enkavi Lab, Claremont McKenna College</p>
     </footer>
 
+    <!-- the javascript that allows for image slides, don't change-->
     <script>
         let slideIndex = 0;
         showSlides();
